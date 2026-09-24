@@ -28,7 +28,7 @@ renderer.setPixelRatio(
 document.body.appendChild(renderer.domElement);
 
 
-// Particle colours
+
 
 const colors = [
     0x5961FF,
@@ -41,7 +41,7 @@ const colors = [
 ];
 
 
-// Particles
+
 
 const particleCount = 15;
 const trailLength = 30;
@@ -50,7 +50,7 @@ const particles = [];
 
 for (let i = 0; i < particleCount; i++) {
 
-    // Random size
+    
 
     const size = THREE.MathUtils.randFloat(
         0.06,
@@ -64,7 +64,7 @@ for (let i = 0; i < particleCount; i++) {
     );
 
 
-    // Random colour
+    
 
     const color =
         colors[
@@ -87,7 +87,7 @@ for (let i = 0; i < particleCount; i++) {
     scene.add(particle);
 
 
-    // Random cone axis
+  
 
     const coneAngle =
         THREE.MathUtils.degToRad(
@@ -104,7 +104,7 @@ for (let i = 0; i < particleCount; i++) {
     ).normalize();
 
 
-    // Basis around axis
+    // Basis around axis ... don't touch 
 
     const helper =
         Math.abs(axis.y) < 0.9
@@ -120,7 +120,7 @@ for (let i = 0; i < particleCount; i++) {
         .normalize();
 
 
-    // Random motion
+    // Random motion ... good luck 
 
     const radius =
         THREE.MathUtils.randFloat(1.1, 1.7);
@@ -135,7 +135,7 @@ for (let i = 0; i < particleCount; i++) {
         THREE.MathUtils.randFloat(0.15, 0.25);
 
 
-    // Individual trail
+   
 
     const trailPoints = [];
 
@@ -188,7 +188,7 @@ for (let i = 0; i < particleCount; i++) {
 }
 
 
-// Animation
+
 
 const clock = new THREE.Clock();
 
@@ -200,7 +200,7 @@ function animate() {
 
     for (const p of particles) {
 
-        // Rotation
+        
 
         p.angle +=
             delta * p.rotationSpeed;
@@ -212,20 +212,20 @@ function animate() {
             Math.pow(p.tightening, delta);
 
 
-        // Move along axis
+        
 
         p.distance +=
             delta * p.speed;
 
 
-        // Position along axis
+       
 
         const position =
             p.axis.clone()
                 .multiplyScalar(p.distance);
 
 
-        // Spiral around axis
+        
 
         const spiral =
             p.side.clone()
@@ -245,7 +245,7 @@ function animate() {
             .add(spiral);
 
 
-        // Trail
+        
 
         p.trailPoints[0].position.copy(
             p.mesh.position
@@ -270,7 +270,7 @@ function animate() {
 animate();
 
 
-// Resize
+
 
 window.addEventListener('resize', () => {
 
